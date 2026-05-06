@@ -1,9 +1,9 @@
 {
   "display_name": "Xianxia HUD",
   "provides": ["xianxia-hud"],
-  "description": "ระบบ HUD ธีมเทพเซียน",
+  "description": "Xianxia HUD Extension",
   "version": "1.0.0",
-  "author": "Nammon"
+  "author": "Nammon",
+  "entrypoint": "index.js"
 }
-
 
