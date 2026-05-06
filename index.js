@@ -1,18 +1,7 @@
 jQuery(async () => {
-    const extensionName = 'xianxia-hud';
-    const extensionFolderPath = `scripts/extensions/${extensionName}/`;
-
-    function initHUD() {
-        // โหลด CSS ถ้ายังไม่ได้โหลด
-        if (!$('link[href="' + extensionFolderPath + 'style.css"]').length) {
-            const link = document.createElement('link');
-            link.rel = 'stylesheet';
-            link.type = 'text/css';
-            link.href = extensionFolderPath + 'style.css';
-            document.head.appendChild(link);
-        }
-
-        // สร้างและแปะ HUD ลงไป
+    // รอให้ระบบโหลดแป๊บนึง
+    setTimeout(() => {
+        // เช็กว่ามี HUD อยู่หรือยัง ถ้ายังไม่มีให้สร้างขึ้นมา
         if ($('#xianxia-hud-container').length === 0) {
             const hudHTML = `
             <div class="xianxia-hud" id="xianxia-hud-container">
@@ -39,10 +28,8 @@ jQuery(async () => {
             </div>
             `;
             $('body').append(hudHTML);
-            console.log("HUD Loaded!"); // แอบใส่ log ไว้เช็กว่าโค้ดทำงานไหม
+            console.log("Achi's Xianxia HUD Loaded successfully!");
         }
-    }
-
-    // ดีเลย์นิดนึงเผื่อ ST โหลด UI ของมันเองอยู่
-    setTimeout(initHUD, 1000);
+    }, 2000); // หน่วงเวลา 2 วินาทีให้ ST โหลดหน้าต่างแชทเสร็จก่อน
 });
+
