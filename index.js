@@ -1,14 +1,9 @@
-import { extension_settings } from '../../../extensions.js';
-
-const extensionName = 'xianxia-hud';
-const extensionFolderPath = `scripts/extensions/${extensionName}/`;
-
 async function initHUD() {
-    // โหลดไฟล์ CSS ของเรา
+    // โหลดไฟล์ CSS
     const link = document.createElement('link');
     link.rel = 'stylesheet';
     link.type = 'text/css';
-    link.href = extensionFolderPath + 'style.css';
+    link.href = '/scripts/extensions/xianxia-hud/style.css';
     document.head.appendChild(link);
 
     // สร้างโครงสร้างหน้าจอ HUD
@@ -37,11 +32,14 @@ async function initHUD() {
     </div>
     `;
     
-    // ดันหน้าจอไปแสดงในแชท
-    $('body').append(hudHTML);
+    // ดันหน้าจอไปแสดงในแชท (เช็คก่อนว่ามีหรือยัง จะได้ไม่ซ้ำ)
+    if ($('.xianxia-hud').length === 0) {
+        $('body').append(hudHTML);
+    }
 }
 
-jQuery(async () => {
+// หน่วงเวลา 2 วินาทีเพื่อให้ระบบหลักของ ST โหลดให้เสร็จก่อน แล้วค่อยโชว์ HUD
+setTimeout(() => {
     initHUD();
-});
+}, 2000);
 
